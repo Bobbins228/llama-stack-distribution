@@ -13,6 +13,8 @@ distribution_spec:
     - inline::meta-reference
     eval:
     - remote::trustyai_lmeval
+    - "inline::trustyai_ragas"
+    - "remote::trustyai_ragas"
     datasetio:
     - remote::huggingface
     - inline::localfs

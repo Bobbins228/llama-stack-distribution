@@ -50,6 +50,19 @@ providers:
     config:
         use_k8s: True
         base_url: ${env.VLLM_URL:http://localhost:8000/v1}
+  - provider_id: trustyai_ragas_inline
+    provider_type: inline::trustyai_ragas
+    config:
+      metrics: ["answer_relevancy"]
+  - provider_id: trustyai_ragas_remote
+    provider_type: remote::trustyai_ragas
+    config:
+      metrics: ["answer_relevancy"]
+      kubeflow_config:
+        pipelines_endpoint: ${env.KUBEFLOW_PIPELINES_ENDPOINT}
+        namespace: ${env.KUBEFLOW_NAMESPACE}
+        llama_stack_url: ${env.LLAMA_STACK_URL}
+        base_image: ${env.KUBEFLOW_BASE_IMAGE}
   datasetio:
   - provider_id: huggingface
     provider_type: remote::huggingface
